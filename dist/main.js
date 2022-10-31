@@ -1,18 +1,17 @@
+const sleep = (milliSeconds) => {
+  var startTime = new Date().getTime();
+  while (new Date().getTime() < startTime + milliSeconds);
+};
+
 const getRandomCocktail = async () => {
   const response = await fetch(
     "https://www.thecocktaildb.com/api/json/v1/1/random.php"
   );
+  await sleep(5000);
   return await response.json();
 };
 
 window.onload = async () => {
-  // document.getElementById("content").innerHTML = `
-  //   <h1 id="name" class="skeleton skeleton-text"></h1>
-  //   <img id="image" class="skeleton" src="placholder" width="700" height="700" alt="Cocktail" />
-  //   <h3 id="instructions-title" class="skeleton skeleton-text"></h3>
-  //   <p id="instructions" class="skeleton skeleton-text"></p>
-  // `;
-
   // get random cocktail
   const cocktailList = await getRandomCocktail();
   const cocktail = cocktailList.drinks[0];
