@@ -10,8 +10,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: run Lighthouse CI
-        run: npm install -g @lhci/cli@0.8.x
-        run: lhci autorun
+      - run: npm install -g @lhci/cli@0.8.x
+      - run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
